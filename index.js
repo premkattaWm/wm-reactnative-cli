@@ -185,9 +185,19 @@ const args = require('yargs')
             describe: 'version of expo to upgrade',
             type: 'string'
         })
-        .positional('gemini-key', {
+        .option('gemini-key', {
             describe: 'Gemini Key to authenticate with Gemini',
             type: 'string'
+        })
+        .option('ollama-url', {
+            describe: 'Ollama URL (default: http://localhost:11434)',
+            type: 'string',
+            default: 'http://localhost:11434'
+        })
+        .option('ollama-model', {
+            describe: 'Ollama model name (default: llama3.2)',
+            type: 'string',
+            default: 'llama3.2'
         })
     }, (args) => {
         expoUpgrade(args);
