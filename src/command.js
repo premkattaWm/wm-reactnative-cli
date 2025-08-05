@@ -468,12 +468,10 @@ async function prepareProject(args) {
         taskLogger.succeed(androidBuildSteps[1].succeed);
         taskLogger.setTotal(androidBuildSteps[2].total);
         taskLogger.start(androidBuildSteps[2].start);
-        updateAppJsonFile(config.src);
         logger.info({
             label: loggerLabel,
             message: 'app.json updated.... ' + args.dest
         })
-        await updatePackageJsonFile(config.src + 'package.json');
         taskLogger.incrementProgress(0.2);
         try{
             await exec('yarn', ['install'], {
